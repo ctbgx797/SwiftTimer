@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var startButton: UIButton!
     @IBOutlet var stopButton: UIButton!
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Stopボタンを押せなくする
-        stopButton.isEnabled = true
+        stopButton.isEnabled = false
         
         //配列にAssert.xcassetsに格納した画像ファイルを入れている
         //画像名[0,1,2,3,4]
@@ -53,17 +53,15 @@ class ViewController: UIViewController {
         
         imageView.image = imageArray[count]
         
-        
-        
     }
-
+    
     @IBAction func start(_ sender: Any) {
         
         //imageViewのイメージに画像を反映していく
         startTimer()
         //Startボタンを押したら､Startボタンを押せなくする
         startButton.isEnabled = false
-        startButton.isEnabled = true
+        stopButton.isEnabled = true
         
         
     }
@@ -76,15 +74,11 @@ class ViewController: UIViewController {
         
         //Startボタンを押せるようにする
         startButton.isEnabled = true
+        stopButton.isEnabled = false
         
         //timerを止める
         timer.invalidate()
         
-        count = 0
-
     }
-    
-    
-    
 }
 
